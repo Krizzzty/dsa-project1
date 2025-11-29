@@ -1,0 +1,23 @@
+aim: Arbitrary precision calculators are used to perform arithmetic operations on very large numbers and gives you accurated result and the number of digits it showing is only limited by the ability of host machine(that is our laptop).this calculator can perform addition,subtraction,division and multiplication of 2 operands
+
+explanation:here the input that is : operand1 operator operand2 will be taking as CLA, for eg: 13 + 24
+here the operands are considered as characters that is '1' and '3' instead of digit 13.
+and for each operand there will be 1 array of characters,this array of characters will be storing each digit of operands as characters
+for eg for operand1 :13, array1 contains {'1','3'}
+for operand2 :24 contains {'2','4'}
+like wise for large numbers there will be big array
+
+and this big array is splitted in to different group,each group contains 4 digit (after converting each char to digit) and stored in a linked list(LL)
+that if the arrays are 12345678, 45674452
+LL will be
+1234<-5678 and 4567<-3324 
+and for the resultant,we maintain another LL,here each node is considered as each digit when we perform operation that is:
+
+    1234<-5678 +                   first perform 5678+4452 = 10130
+    4567<-4452                      remove the carry that is 1 and store it in a variable 'carry'   
+---------------------               after removing we get 0130,store this in the last node of resultant LL, now the res LL is: <-0130
+                                    now do 1234+4567=5801
+                                    now add the carry 1 to 5801=5802
+                                    store this in to second last node in Res LL: 5802<-0130
+                                    now print this result by reading from each node,
+this calculator is designed to handle large numbers,so if we try to store this as single node,it will be more than the capacity,that is why are doing divide and conquer approach
